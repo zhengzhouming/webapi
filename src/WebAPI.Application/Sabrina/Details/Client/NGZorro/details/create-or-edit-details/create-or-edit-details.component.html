@@ -1,0 +1,186 @@
+
+<form nz-form #validateForm="ngForm" (ngSubmit)="submitForm()" nzLayout="horizontal" autocomplete="off">
+    <!-- 模态框头部 -->
+    <div class="modal-header">
+        <div class="modal-title">
+            <i class="iconfont icon-medicine-box mr-sm"></i>
+            <span *ngIf="entity.id">{{l('Edit')}}</span>
+            <span *ngIf="!entity.id">{{l('Create')}}</span>
+        </div>
+    </div>
+    <!-- 模态框内容 -->
+    <fieldset>
+        <!-- 提示信息 -->
+        <!-- <nz-alert nzType="info" nzCloseable [nzShowIcon]="true" nzMessage="l('我想提示点什么内容给你说')"></nz-alert> -->
+                   <!-- Detailid : Detailid 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="detailid">  
+                            {{l('DetailsDetailid')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="detailid" #detailid="ngModel"
+                                       [(ngModel)]="entity.detailid"
+                                      [placeholder]="l('DetailsDetailidInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--Detailid : Detailid 的控件范围结束=END= -->
+                   <!-- Custid : Custid 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="custid">  
+                            {{l('DetailsCustid')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="custid" #custid="ngModel"
+                                       [(ngModel)]="entity.custid"
+                                      [placeholder]="l('DetailsCustidInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--Custid : Custid 的控件范围结束=END= -->
+                   <!-- SerialFrom : SerialFrom 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="serialFrom">  
+                            {{l('DetailsSerialFrom')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="serialFrom" #serialFrom="ngModel"
+                                       [(ngModel)]="entity.serialFrom"
+                                      [placeholder]="l('DetailsSerialFromInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--SerialFrom : SerialFrom 的控件范围结束=END= -->
+                   <!-- BuyerItem : BuyerItem 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="buyerItem">  
+                            {{l('DetailsBuyerItem')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="buyerItem" #buyerItem="ngModel"
+                                       [(ngModel)]="entity.buyerItem"
+                                      [placeholder]="l('DetailsBuyerItemInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--BuyerItem : BuyerItem 的控件范围结束=END= -->
+                   <!-- Itemdesc : Itemdesc 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="itemdesc">  
+                            {{l('DetailsItemdesc')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="itemdesc" #itemdesc="ngModel"
+                                       [(ngModel)]="entity.itemdesc"
+                                      [placeholder]="l('DetailsItemdescInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--Itemdesc : Itemdesc 的控件范围结束=END= -->
+                   <!-- Colorcode : Colorcode 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="colorcode">  
+                            {{l('DetailsColorcode')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="colorcode" #colorcode="ngModel"
+                                       [(ngModel)]="entity.colorcode"
+                                      [placeholder]="l('DetailsColorcodeInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--Colorcode : Colorcode 的控件范围结束=END= -->
+                   <!-- Size1 : Size1 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="size1">  
+                            {{l('DetailsSize1')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="size1" #size1="ngModel"
+                                       [(ngModel)]="entity.size1"
+                                      [placeholder]="l('DetailsSize1InputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--Size1 : Size1 的控件范围结束=END= -->
+                   <!-- ConQty : ConQty 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="conQty">  
+                            {{l('ConQty')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="conQty" #conQty="ngModel"
+                                       [(ngModel)]="entity.conQty"
+                                      [placeholder]="l('DetailsConQtyInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--ConQty : ConQty 的控件范围结束=END= -->
+                   <!-- Qty : Qty 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="qty">  
+                            {{l('Qty')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="qty" #qty="ngModel"
+                                       [(ngModel)]="entity.qty"
+                                      [placeholder]="l('DetailsQtyInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--Qty : Qty 的控件范围结束=END= -->
+                   <!-- Pprfno : Pprfno 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="pprfno">  
+                            {{l('DetailsPprfno')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="pprfno" #pprfno="ngModel"
+                                       [(ngModel)]="entity.pprfno"
+                                      [placeholder]="l('DetailsPprfnoInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--Pprfno : Pprfno 的控件范围结束=END= -->
+
+    </fieldset>
+    <!-- 模态框底部 -->
+    <div class="modal-footer">
+        <button nz-button [nzType]="'default'" type="button" (click)="close()" [disabled]="saving">
+            <i class="iconfont icon-close-circle"></i> {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.form.valid|| saving" [nzLoading]="saving">
+            <i class="iconfont icon-save" *ngIf="!saving"></i> {{l("Save")}}
+        </button>
+    </div>
+</form>

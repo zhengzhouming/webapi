@@ -1,0 +1,382 @@
+
+
+<page-header [title]="l('ConPpr')"></page-header>
+
+<nz-card [nzBordered]="false">
+
+    <div class="mb-md">
+        <!-- 模糊搜索框 -->
+        <nz-row nzGutter="8">
+            <nz-col nzSm="24">
+                <nz-form-item>
+                    <nz-form-control>
+                        <nz-input-group nzSearch [nzSuffix]="suffixSearchButton">
+                            <input type="text" nz-input [(ngModel)]="filterText" (keyup.enter)="refresh()" name="filterText" [placeholder]="l('SearchWithThreeDot')">
+                            <ng-template #suffixSearchButton>
+                                <button nz-button nzType="primary" nzSearch type="submit" (click)="refresh()">
+                                    <i class="anticon anticon-search"></i>
+                                </button>
+                            </ng-template>
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </nz-col>
+        </nz-row>
+    </div>
+
+    <div class="mb-md">
+        <!-- 操作常规按钮部分 如： 添加、批量删除、导出Excel表 -->
+        <nz-row nzGutter="8">
+            <nz-col nzMd="20" nzSm="12" class="btn-gutter">
+
+
+                <button nz-button [nzType]="'primary'" *ngIf="isGranted('Pages.ConPpr.Create')" (click)="createOrEdit()">
+                    <i class="anticon anticon-plus"></i>
+                    <span>
+                        {{l("Create")}}
+                    </span>
+                </button>
+                <button nz-button [nzType]="'danger'" *ngIf="isGranted('Pages.ConPpr.BatchDelete')" (click)="batchDelete()">
+                    <i class="anticon anticon-delete"></i>
+                    <span>
+                        {{l("BatchDelete")}}
+                    </span>
+                </button>
+                <button nz-button nzType="default" *ngIf="isGranted('Pages.ConPpr.ExportToExcel')" (click)="exportToExcel()">
+                    <i class="anticon anticon-file-excel"></i>
+                    <span>
+                        {{l("ExportToExcel")}}
+                    </span>
+                </button>
+            </nz-col>
+        </nz-row>
+    </div>
+
+    <!-- 复选框提示的内容数据部分 -->
+    <div class="my-md">
+        <nz-alert [nzType]="'info'" [nzShowIcon]="true" [nzMessage]="message">
+            <ng-template #message>
+                <span [innerHTML]="l('GridSelectedXItemsTips',selectedDataItems.length)"></span>
+                <a (click)="restCheckStatus(dataList)" class="ml-md">
+                    {{l('ClearEmpty')}}
+                </a>
+                <nz-divider nzType="vertical"></nz-divider>
+                <a (click)="refreshGoFirstPage()">
+                    {{l('Refresh')}}
+                </a>
+            </ng-template>
+        </nz-alert>
+    </div>
+
+    <!-- 实体的表格内容 -->
+    <nz-row class="my-md">
+        <nz-table #ajaxTable [nzData]="dataList" [nzTotal]="totalItems" [(nzPageIndex)]="pageNumber" [(nzPageSize)]="pageSize" [nzLoading]="isTableLoading"
+                  (nzPageIndexChange)="pageNumberChange()" (nzPageSizeChange)="refresh()" [nzShowSizeChanger]="true" [nzShowQuickJumper]="true"
+                  [nzNoResult]="noDataTemplate" [nzShowTotal]="showTotalTemplate" [nzFrontPagination]="false">
+            <!-- 暂无数据组件 -->
+            <ng-template #noDataTemplate>
+                <no-data></no-data>
+            </ng-template>
+            <!-- 分页信息显示 当前 1 页/共 3 页，共 5 条/显示 1-2 条 -->
+            <ng-template #showTotalTemplate let-total let-range="range">
+                {{l('GridFooterDisplayText',pageNumber,totalPages,total,range[0],range[1])}}
+            </ng-template>
+            <!-- 表头 -->
+            <thead (nzSortChange)="gridSort($event)">
+                <tr>
+                    <th nzShowCheckbox [(nzChecked)]="allChecked" [nzDisabled]="allCheckboxDisabled" [nzIndeterminate]="checkboxIndeterminate"
+                        (nzCheckedChange)="checkAll($event)"></th>
+                    <th nz-th nzShowSort nzSortKey="Cust_id">
+                        <span>{{l('Cust_id')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Serial_From">
+                        <span>{{l('Serial_From')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Qty">
+                        <span>{{l('Qty')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Org">
+                        <span>{{l('Org')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="PPrfNo">
+                        <span>{{l('PPrfNo')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Count1">
+                        <span>{{l('Count1')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Create_Pc">
+                        <span>{{l('Create_Pc')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Update_Date">
+                        <span>{{l('Update_Date')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Con_no">
+                        <span>{{l('Con_no')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Country_Code">
+                        <span>{{l('Country_Code')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Con_To">
+                        <span>{{l('Con_To')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Pkg_Code">
+                        <span>{{l('Pkg_Code')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Scan_ID">
+                        <span>{{l('Scan_ID')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Net_Net">
+                        <span>{{l('Net_Net')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Con_Net">
+                        <span>{{l('Con_Net')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Con_Gross">
+                        <span>{{l('Con_Gross')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Con_L">
+                        <span>{{l('Con_L')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Con_W">
+                        <span>{{l('Con_W')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="Con_H">
+                        <span>{{l('Con_H')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="B_Volume">
+                        <span>{{l('B_Volume')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="PO">
+                        <span>{{l('PO')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="MAIN_LINE">
+                        <span>{{l('MAIN_LINE')}}</span>
+                    </th>
+                    <th nz-th nzShowSort nzSortKey="PPR_id">
+                        <span>{{l('PPR_id')}}</span>
+                    </th>
+                    <th nzWidth="230px" class="text-center">
+                        <span>{{l('Actions')}}</span>
+                    </th>
+                </tr>
+            </thead>
+            <!-- 表格内容 -->
+            <tbody>
+                <tr *ngFor="let item of ajaxTable.data">
+                    <!-- 全选框 -->
+                    <td nzShowCheckbox [(nzChecked)]="item.checked" (nzCheckedChange)="refreshCheckStatus(dataList)"></td>
+
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.cust_id">
+                                {{item.cust_id}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.serial_From">
+                                {{item.serial_From}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.qty">
+                                {{item.qty}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.org">
+                                {{item.org}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.pPrfNo">
+                                {{item.pPrfNo}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.count1">
+                                {{item.count1}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.create_Pc">
+                                {{item.create_Pc}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td class="text-center">
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.update_Date  |_date">
+                                {{item.update_Date  |_date}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.con_no">
+                                {{item.con_no}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.country_Code">
+                                {{item.country_Code}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.con_To">
+                                {{item.con_To}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.pkg_Code">
+                                {{item.pkg_Code}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.scan_ID">
+                                {{item.scan_ID}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.net_Net">
+                                {{item.net_Net}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.con_Net">
+                                {{item.con_Net}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.con_Gross">
+                                {{item.con_Gross}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.con_L">
+                                {{item.con_L}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.con_W">
+                                {{item.con_W}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.con_H">
+                                {{item.con_H}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.b_Volume">
+                                {{item.b_Volume}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.pO">
+                                {{item.pO}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.mAIN_LINE">
+                                {{item.mAIN_LINE}}
+                            </span>
+                        </ellipsis>
+                    </td>
+                    <td nz-td>
+                        <ellipsis lines="1">
+                            <span nz-tooltip [nzTitle]="item.pPR_id">
+                                {{item.pPR_id}}
+                            </span>
+                        </ellipsis>
+                    </td>
+
+
+                    <td>
+                        <!-- 编辑 -->
+                        <ng-container *ngIf="isGranted('Pages.ConPpr.Edit')">
+                            <a (click)="createOrEdit(item.id)">
+                                <i class="anticon anticon-edit mr-sm"></i>
+                                <span>{{l('Edit')}}</span>
+                            </a>
+                            <nz-divider nzType="vertical"></nz-divider>
+                        </ng-container>
+                        <!-- 删除 -->
+                        <ng-container *ngIf="isGranted('Pages.ConPpr.Delete')">
+                            <nz-popconfirm [nzTitle]="l('ConfirmDeleteWarningMessage')" (nzOnConfirm)="delete(item)" [nzOkText]="l('Ok')" [nzCancelText]="l('Cancel')">
+                                <a nz-popconfirm>
+                                    <i class="anticon anticon-delete mr-sm"></i>
+                                    <span>{{l('Delete')}}</span>
+                                </a>
+                            </nz-popconfirm>
+                        </ng-container>
+                        <!-- 更多 -->
+                        <ng-container *ngIf="isGrantedAny('Pages.ConPpr', 'Pages.ConPpr.Create', 'Pages.ConPpr.Edit')">
+                            <nz-divider nzType="vertical"></nz-divider>
+                            <nz-dropdown>
+                                <a nz-dropdown>
+                                    <i class="anticon anticon-down"></i>
+                                    <span>{{l('More')}}</span>
+                                    
+                                </a>
+                                <!-- <ul nz-menu>
+                                    <li nz-menu-item  ngIf = "isGranted('Pages.ConPpr.Edit')"  (click)="createOrEdit(item.id) ">
+                                        <a>
+                                            <i class="anticon anticon-safety mr-sm"></i>
+                                            <span>{{l('Edit')}}</span>
+                                        </a>
+                                    </li>
+                                    <li nz-menu-item   *ngIf = "isGranted('Pages.ConPpr.Delete')"  (click)="delete(item) ">
+                                        <a>
+                                            <i class="anticon anticon-unlock mr-sm"></i>
+                                            <span>{{l('Delete')}}</span>
+                                        </a>
+                                    </li>
+                                </ul> -->
+                            </nz-dropdown>
+                        </ng-container>
+                    </td>
+                </tr>
+            </tbody>
+        </nz-table>
+
+    </nz-row>
+</nz-card>
+
