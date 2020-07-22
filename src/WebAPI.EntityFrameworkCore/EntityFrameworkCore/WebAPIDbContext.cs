@@ -20,7 +20,7 @@ namespace WebAPI.EntityFrameworkCore
         public DbSet<Locations> Location { get; set; }
 
 
-        public DbSet<Details> Detailss { get; set; }
+        public DbSet<CONDetails> Detailss { get; set; }
 
 
         public WebAPIDbContext(DbContextOptions<WebAPIDbContext> options)

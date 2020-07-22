@@ -27,14 +27,14 @@ namespace WebAPI.Sabrina.Details
     //[AbpAuthorize]
     public class DetailsAppService : WebAPIAppServiceBase, IDetailsAppService
     {
-         private readonly IRepository<Details, long>        _detailsRepository;
+         private readonly IRepository<CONDetails, long>        _detailsRepository;
 
         private readonly IDetailsManager _detailsManager;
         /// <summary>
         /// 构造函数
         ///</summary>
         public DetailsAppService(
-		IRepository<Details, long>  detailsRepository
+		IRepository<CONDetails, long>  detailsRepository
               ,IDetailsManager detailsManager       
 
              )
@@ -177,7 +177,7 @@ DetailsEditDto editDto;
 		{
 			//TODO:新增前的逻辑判断，是否允许新增
 
-            var entity = ObjectMapper.Map<Details>(input);
+            var entity = ObjectMapper.Map<CONDetails>(input);
             //调用领域服务
             entity = await _detailsManager.CreateAsync(entity);
 

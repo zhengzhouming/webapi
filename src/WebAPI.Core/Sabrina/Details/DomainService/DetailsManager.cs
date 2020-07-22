@@ -16,13 +16,13 @@ namespace WebAPI.Sabrina.Details.DomainService
     public class DetailsManager :WebAPIDomainServiceBase, IDetailsManager
     {
 		
-		private readonly IRepository<Details,long> _detailsRepository;
+		private readonly IRepository<CONDetails,long> _detailsRepository;
 
 		/// <summary>
 		/// Details的构造方法
 		/// 通过构造函数注册服务到依赖注入容器中
 		///</summary>
-	public DetailsManager(IRepository<Details, long> detailsRepository)	{
+	public DetailsManager(IRepository<CONDetails, long> detailsRepository)	{
 			_detailsRepository =  detailsRepository;
 		}
 
@@ -32,7 +32,7 @@ namespace WebAPI.Sabrina.Details.DomainService
         /// 返回表达式数的实体信息即IQueryable类型
         /// </summary>
         /// <returns></returns>
-        public IQueryable<Details> QueryDetailss()
+        public IQueryable<CONDetails> QueryDetailss()
         {
             return _detailsRepository.GetAll();
         }
@@ -41,7 +41,7 @@ namespace WebAPI.Sabrina.Details.DomainService
         /// 返回即IQueryable类型的实体，不包含EF Core跟踪标记
         /// </summary>
         /// <returns></returns>
-        public IQueryable<Details> QueryDetailssAsNoTracking()
+        public IQueryable<CONDetails> QueryDetailssAsNoTracking()
         {
             return _detailsRepository.GetAll().AsNoTracking();
         }
@@ -51,7 +51,7 @@ namespace WebAPI.Sabrina.Details.DomainService
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Details> FindByIdAsync(long id)
+        public async Task<CONDetails> FindByIdAsync(long id)
         {
             var entity = await _detailsRepository.GetAsync(id);
             return entity;
@@ -72,13 +72,13 @@ namespace WebAPI.Sabrina.Details.DomainService
 
 		 
 		 
-        public async Task<Details> CreateAsync(Details entity)
+        public async Task<CONDetails> CreateAsync(CONDetails entity)
         {
             entity.Id = await _detailsRepository.InsertAndGetIdAsync(entity);
             return entity;
         }
 
-        public async Task UpdateAsync(Details entity)
+        public async Task UpdateAsync(CONDetails entity)
         {
             await _detailsRepository.UpdateAsync(entity);
         }

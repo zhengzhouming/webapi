@@ -16,21 +16,21 @@ namespace WebAPI.Sabrina.Details.DomainService
 		/// 返回表达式数的实体信息即IQueryable类型
 		/// </summary>
 		/// <returns></returns>
-		IQueryable<Details> QueryDetailss();
+		IQueryable<CONDetails> QueryDetailss();
 
 		/// <summary>
 		/// 返回性能更好的IQueryable类型，但不包含EF Core跟踪标记
 		/// </summary>
 		/// <returns></returns>
 
-		IQueryable<Details> QueryDetailssAsNoTracking();
+		IQueryable<CONDetails> QueryDetailssAsNoTracking();
 
 		/// <summary>
 		/// 根据Id查询实体信息
 		/// </summary>
 		/// <param name="id"></param>
 		/// <returns></returns>
-		Task<Details> FindByIdAsync(long id);
+		Task<CONDetails> FindByIdAsync(long id);
 	
 		/// <summary>
 		/// 检查实体是否存在
@@ -44,14 +44,14 @@ namespace WebAPI.Sabrina.Details.DomainService
 		/// </summary>
 		/// <param name="entity">实体</param>
 		/// <returns></returns>
-		Task<Details> CreateAsync(Details entity);
+		Task<CONDetails> CreateAsync(CONDetails entity);
 
 		/// <summary>
 		/// 修改
 		/// </summary>
 		/// <param name="entity">实体</param>
 		/// <returns></returns>
-		Task UpdateAsync(Details entity);
+		Task UpdateAsync(CONDetails entity);
 
 		/// <summary>
 		/// 删除

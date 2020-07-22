@@ -15,11 +15,11 @@ namespace WebAPI.CustomDtoAutoMapper
     {
         public static void CreateMappings(IMapperConfigurationExpression configuration)
         {
-            configuration.CreateMap <Details,DetailsListDto>();
-            configuration.CreateMap <DetailsListDto,Details>();
+            configuration.CreateMap <CONDetails,DetailsListDto>();
+            configuration.CreateMap <DetailsListDto,CONDetails>();
 
-            configuration.CreateMap <DetailsEditDto,Details>();
-            configuration.CreateMap <Details,DetailsEditDto>();
+            configuration.CreateMap <DetailsEditDto,CONDetails>();
+            configuration.CreateMap <CONDetails,DetailsEditDto>();
 					 
 							//// custom codes
 									

@@ -11,7 +11,7 @@ namespace  WebAPI.Sabrina.Details.Dtos
 {
 	/// <summary>
 	/// 的列表DTO
-	/// <see cref="Details"/>
+	/// <see cref="CONDetails"/>
 	/// </summary>
     public class DetailsEditDto
     {

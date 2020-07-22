@@ -5,7 +5,7 @@ using System.Text;
 
 namespace WebAPI.Sabrina.Details
 {
-    public  class Details : Entity<long>
+    public  class CONDetails : Entity<long>
     {
        
         public string Detailid { get; set; }

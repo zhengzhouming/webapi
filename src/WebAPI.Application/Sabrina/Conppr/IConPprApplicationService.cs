@@ -20,6 +20,7 @@ using Abp.Application.Services.Dto;
 
 using WebAPI.Sabrina.Conppr.Dtos;
 using WebAPI.Sabrina.Conppr;
+using static WebAPI.Sabrina.Conppr.ConPprAppService;
 
 namespace WebAPI.Sabrina.Conppr
 {
@@ -75,15 +76,11 @@ namespace WebAPI.Sabrina.Conppr
         /// </summary>
         Task BatchDelete(List<long> input);
 
+         List<OrderInfos> getOrderByTagNumber(string tagNumber);
 
-        /// <summary>
-        /// 导出ConPpr为excel表
-        /// </summary>
-        /// <returns></returns>
-        //Task<FileDto> GetToExcel();
+          List<StockInfos> getStockByTagNumber(string tagNumber);
 
 
 
-        Task<int> GetPprByTagNumber(string tagNumber);
     }
 }
