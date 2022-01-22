@@ -19,7 +19,9 @@ namespace WebAPI.EntityFrameworkCore
             base.OnConfiguring(optionsBuilder);
             //     var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentRootFolder(), addUserSecrets: true);
             var configuration = AppConfigurations.Get(WebContentDirectoryFinder.CalculateContentXMDBRootFolder());
-            optionsBuilder.UseMySql(configuration.GetConnectionString(WebAPIConsts.ConnectionStringName));
+            optionsBuilder.UseMySql(
+                
+                configuration.GetConnectionString(WebAPIConsts.ConnectionStringName), options => options.EnableRetryOnFailure());
             
         }
 

@@ -1,0 +1,170 @@
+
+<form nz-form #validateForm="ngForm" (ngSubmit)="submitForm()" nzLayout="horizontal" autocomplete="off">
+    <!-- 模态框头部 -->
+    <div class="modal-header">
+        <div class="modal-title">
+            <i class="iconfont icon-medicine-box mr-sm"></i>
+            <span *ngIf="entity.id">{{l('Edit')}}</span>
+            <span *ngIf="!entity.id">{{l('Create')}}</span>
+        </div>
+    </div>
+    <!-- 模态框内容 -->
+    <fieldset>
+        <!-- 提示信息 -->
+        <!-- <nz-alert nzType="info" nzCloseable [nzShowIcon]="true" nzMessage="l('我想提示点什么内容给你说')"></nz-alert> -->
+                   <!-- org : org 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="org">  
+                            {{l('Invreceiorg')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="org" #org="ngModel"
+                                       [(ngModel)]="entity.org"
+                                      [placeholder]="l('InvreceiorgInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--org : org 的控件范围结束=END= -->
+                   <!-- subinv : subinv 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="subinv">  
+                            {{l('Invreceisubinv')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="subinv" #subinv="ngModel"
+                                       [(ngModel)]="entity.subinv"
+                                      [placeholder]="l('InvreceisubinvInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--subinv : subinv 的控件范围结束=END= -->
+                   <!-- line : line 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="line">  
+                            {{l('Invreceiline')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="line" #line="ngModel"
+                                       [(ngModel)]="entity.line"
+                                      [placeholder]="l('InvreceilineInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--line : line 的控件范围结束=END= -->
+                   <!-- TagNumber : TagNumber 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagNumber">  
+                            {{l('InvreceiTagNumber')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagNumber" #tagNumber="ngModel"
+                                       [(ngModel)]="entity.tagNumber"
+                                      [placeholder]="l('InvreceiTagNumberInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--TagNumber : TagNumber 的控件范围结束=END= -->
+                   <!-- kg : kg 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="kg">  
+                            {{l('Invreceikg')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="kg" #kg="ngModel"
+                                       [(ngModel)]="entity.kg"
+                                      [placeholder]="l('InvreceikgInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--kg : kg 的控件范围结束=END= -->
+                   <!-- scantime : scantime 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="scantime">  
+                            {{l('Invreceiscantime')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="scantime" #scantime="ngModel"
+                                       [(ngModel)]="entity.scantime"
+                                      [placeholder]="l('InvreceiscantimeInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--scantime : scantime 的控件范围结束=END= -->
+                   <!-- update_date : update_date 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="update_date">  
+                            {{l('Invreceiupdate_date')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="update_date" #update_date="ngModel"
+                                       [(ngModel)]="entity.update_date"
+                                      [placeholder]="l('Invreceiupdate_dateInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--update_date : update_date 的控件范围结束=END= -->
+                   <!-- create_pc : create_pc 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="create_pc">  
+                            {{l('Invreceicreate_pc')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="create_pc" #create_pc="ngModel"
+                                       [(ngModel)]="entity.create_pc"
+                                      [placeholder]="l('Invreceicreate_pcInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--create_pc : create_pc 的控件范围结束=END= -->
+                   <!-- exeStatus : exeStatus 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="exeStatus">  
+                            {{l('InvreceiexeStatus')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="exeStatus" #exeStatus="ngModel"
+                                       [(ngModel)]="entity.exeStatus"
+                                      [placeholder]="l('InvreceiexeStatusInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--exeStatus : exeStatus 的控件范围结束=END= -->
+
+    </fieldset>
+    <!-- 模态框底部 -->
+    <div class="modal-footer">
+        <button nz-button [nzType]="'default'" type="button" (click)="close()" [disabled]="saving">
+            <i class="iconfont icon-close-circle"></i> {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.form.valid|| saving" [nzLoading]="saving">
+            <i class="iconfont icon-save" *ngIf="!saving"></i> {{l("Save")}}
+        </button>
+    </div>
+</form>

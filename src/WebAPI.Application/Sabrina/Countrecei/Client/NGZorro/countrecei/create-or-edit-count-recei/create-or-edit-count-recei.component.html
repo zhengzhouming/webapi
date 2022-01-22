@@ -1,0 +1,186 @@
+
+<form nz-form #validateForm="ngForm" (ngSubmit)="submitForm()" nzLayout="horizontal" autocomplete="off">
+    <!-- 模态框头部 -->
+    <div class="modal-header">
+        <div class="modal-title">
+            <i class="iconfont icon-medicine-box mr-sm"></i>
+            <span *ngIf="entity.id">{{l('Edit')}}</span>
+            <span *ngIf="!entity.id">{{l('Create')}}</span>
+        </div>
+    </div>
+    <!-- 模态框内容 -->
+    <fieldset>
+        <!-- 提示信息 -->
+        <!-- <nz-alert nzType="info" nzCloseable [nzShowIcon]="true" nzMessage="l('我想提示点什么内容给你说')"></nz-alert> -->
+                   <!-- Org : Org 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="org">  
+                            {{l('CountReceiOrg')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="org" #org="ngModel"
+                                       [(ngModel)]="entity.org"
+                                      [placeholder]="l('CountReceiOrgInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--Org : Org 的控件范围结束=END= -->
+                   <!-- Subinv : Subinv 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="subinv">  
+                            {{l('CountReceiSubinv')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="subinv" #subinv="ngModel"
+                                       [(ngModel)]="entity.subinv"
+                                      [placeholder]="l('CountReceiSubinvInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--Subinv : Subinv 的控件范围结束=END= -->
+                   <!-- line : line 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="line">  
+                            {{l('CountReceiline')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="line" #line="ngModel"
+                                       [(ngModel)]="entity.line"
+                                      [placeholder]="l('CountReceilineInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--line : line 的控件范围结束=END= -->
+                   <!-- style : style 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="style">  
+                            {{l('CountReceistyle')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="style" #style="ngModel"
+                                       [(ngModel)]="entity.style"
+                                      [placeholder]="l('CountReceistyleInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--style : style 的控件范围结束=END= -->
+                   <!-- StyleCount : StyleCount 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="styleCount">  
+                            {{l('CountReceiStyleCount')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="styleCount" #styleCount="ngModel"
+                                       [(ngModel)]="entity.styleCount"
+                                      [placeholder]="l('CountReceiStyleCountInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--StyleCount : StyleCount 的控件范围结束=END= -->
+                   <!-- qtyCount : qtyCount 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="qtyCount">  
+                            {{l('CountReceiqtyCount')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="qtyCount" #qtyCount="ngModel"
+                                       [(ngModel)]="entity.qtyCount"
+                                      [placeholder]="l('CountReceiqtyCountInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--qtyCount : qtyCount 的控件范围结束=END= -->
+                   <!-- receiInDate : receiInDate 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="receiInDate">  
+                            {{l('CountReceireceiInDate')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="receiInDate" #receiInDate="ngModel"
+                                       [(ngModel)]="entity.receiInDate"
+                                      [placeholder]="l('CountReceireceiInDateInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--receiInDate : receiInDate 的控件范围结束=END= -->
+                   <!-- status : status 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="status">  
+                            {{l('CountReceistatus')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="status" #status="ngModel"
+                                       [(ngModel)]="entity.status"
+                                      [placeholder]="l('CountReceistatusInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--status : status 的控件范围结束=END= -->
+                   <!-- ScanQtyCount : ScanQtyCount 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="scanQtyCount">  
+                            {{l('CountReceiScanQtyCount')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="scanQtyCount" #scanQtyCount="ngModel"
+                                       [(ngModel)]="entity.scanQtyCount"
+                                      [placeholder]="l('CountReceiScanQtyCountInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--ScanQtyCount : ScanQtyCount 的控件范围结束=END= -->
+                   <!-- DifferenceQtyCount : DifferenceQtyCount 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="differenceQtyCount">  
+                            {{l('CountReceiDifferenceQtyCount')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="differenceQtyCount" #differenceQtyCount="ngModel"
+                                       [(ngModel)]="entity.differenceQtyCount"
+                                      [placeholder]="l('CountReceiDifferenceQtyCountInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--DifferenceQtyCount : DifferenceQtyCount 的控件范围结束=END= -->
+
+    </fieldset>
+    <!-- 模态框底部 -->
+    <div class="modal-footer">
+        <button nz-button [nzType]="'default'" type="button" (click)="close()" [disabled]="saving">
+            <i class="iconfont icon-close-circle"></i> {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.form.valid|| saving" [nzLoading]="saving">
+            <i class="iconfont icon-save" *ngIf="!saving"></i> {{l("Save")}}
+        </button>
+    </div>
+</form>

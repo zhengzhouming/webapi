@@ -25,12 +25,27 @@ namespace WebAPI
                 ConPprMapper.CreateMappings(configuration);
                 LocationsMapper.CreateMappings(configuration);
                 DetailsMapper.CreateMappings(configuration);
+                CountReceiDtoAutoMapper.CreateMappings(configuration);
+                InvreceiMapper.CreateMappings(configuration);
+ 
+                MesDeptMapper.CreateMappings(configuration);
+                MesWorkTagScanDtoAutoMapper.CreateMappings(configuration);
+                MesWorkTagScanReceiptMapper.CreateMappings(configuration);
+                ReceiDtoAutoMapper.CreateMappings(configuration);
+                MesUserMapper.CreateMappings(configuration);
             });
 
             Configuration.Authorization.Providers.Add<WebAPIAuthorizationProvider>();           
             Configuration.Authorization.Providers.Add<ConPprAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<LocationsAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<DetailsAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<CountReceiAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<InvreceiAuthorizationProvider>(); 
+            Configuration.Authorization.Providers.Add<MesDeptAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<MesWorkTagScanAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<MesWorkTagScanReceiptAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<ReceiAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<MesUserAuthorizationProvider>();
 
         }
 

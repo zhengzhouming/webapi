@@ -1,0 +1,106 @@
+
+<form nz-form #validateForm="ngForm" (ngSubmit)="submitForm()" nzLayout="horizontal" autocomplete="off">
+    <!-- 模态框头部 -->
+    <div class="modal-header">
+        <div class="modal-title">
+            <i class="iconfont icon-medicine-box mr-sm"></i>
+            <span *ngIf="entity.id">{{l('Edit')}}</span>
+            <span *ngIf="!entity.id">{{l('Create')}}</span>
+        </div>
+    </div>
+    <!-- 模态框内容 -->
+    <fieldset>
+        <!-- 提示信息 -->
+        <!-- <nz-alert nzType="info" nzCloseable [nzShowIcon]="true" nzMessage="l('我想提示点什么内容给你说')"></nz-alert> -->
+                   <!-- account : account 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="account">  
+                            {{l('MesUseraccount')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="account" #account="ngModel"
+                                       [(ngModel)]="entity.account"
+                                      [placeholder]="l('MesUseraccountInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--account : account 的控件范围结束=END= -->
+                   <!-- password : password 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="password">  
+                            {{l('MesUserpassword')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="password" #password="ngModel"
+                                       [(ngModel)]="entity.password"
+                                      [placeholder]="l('MesUserpasswordInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--password : password 的控件范围结束=END= -->
+                   <!-- userName : userName 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="userName">  
+                            {{l('MesUseruserName')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="userName" #userName="ngModel"
+                                       [(ngModel)]="entity.userName"
+                                      [placeholder]="l('MesUseruserNameInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--userName : userName 的控件范围结束=END= -->
+                   <!-- deptID : deptID 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="deptID">  
+                            {{l('MesUserdeptID')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="deptID" #deptID="ngModel"
+                                       [(ngModel)]="entity.deptID"
+                                      [placeholder]="l('MesUserdeptIDInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--deptID : deptID 的控件范围结束=END= -->
+                   <!-- marsk : marsk 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="marsk">  
+                            {{l('MesUsermarsk')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="marsk" #marsk="ngModel"
+                                       [(ngModel)]="entity.marsk"
+                                      [placeholder]="l('MesUsermarskInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--marsk : marsk 的控件范围结束=END= -->
+
+    </fieldset>
+    <!-- 模态框底部 -->
+    <div class="modal-footer">
+        <button nz-button [nzType]="'default'" type="button" (click)="close()" [disabled]="saving">
+            <i class="iconfont icon-close-circle"></i> {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.form.valid|| saving" [nzLoading]="saving">
+            <i class="iconfont icon-save" *ngIf="!saving"></i> {{l("Save")}}
+        </button>
+    </div>
+</form>

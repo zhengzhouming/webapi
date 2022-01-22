@@ -1,0 +1,462 @@
+
+<form nz-form #validateForm="ngForm" (ngSubmit)="submitForm()" nzLayout="horizontal" autocomplete="off">
+    <!-- 模态框头部 -->
+    <div class="modal-header">
+        <div class="modal-title">
+            <i class="iconfont icon-medicine-box mr-sm"></i>
+            <span *ngIf="entity.id">{{l('Edit')}}</span>
+            <span *ngIf="!entity.id">{{l('Create')}}</span>
+        </div>
+    </div>
+    <!-- 模态框内容 -->
+    <fieldset>
+        <!-- 提示信息 -->
+        <!-- <nz-alert nzType="info" nzCloseable [nzShowIcon]="true" nzMessage="l('我想提示点什么内容给你说')"></nz-alert> -->
+                   <!-- tagInvoice : tagInvoice 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagInvoice">  
+                            {{l('MesWorkTagScantagInvoice')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagInvoice" #tagInvoice="ngModel"
+                                       [(ngModel)]="entity.tagInvoice"
+                                      [placeholder]="l('MesWorkTagScantagInvoiceInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagInvoice : tagInvoice 的控件范围结束=END= -->
+                   <!-- tagReceiptNumber : tagReceiptNumber 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagReceiptNumber">  
+                            {{l('MesWorkTagScantagReceiptNumber')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagReceiptNumber" #tagReceiptNumber="ngModel"
+                                       [(ngModel)]="entity.tagReceiptNumber"
+                                      [placeholder]="l('MesWorkTagScantagReceiptNumberInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagReceiptNumber : tagReceiptNumber 的控件范围结束=END= -->
+                   <!-- tagLocation : tagLocation 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagLocation">  
+                            {{l('MesWorkTagScantagLocation')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagLocation" #tagLocation="ngModel"
+                                       [(ngModel)]="entity.tagLocation"
+                                      [placeholder]="l('MesWorkTagScantagLocationInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagLocation : tagLocation 的控件范围结束=END= -->
+                   <!-- tagNumber : tagNumber 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="tagNumber">
+                            {{l('MesWorkTagScantagNumber')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagNumber" #tagNumber="ngModel"
+                                       [(ngModel)]="entity.tagNumber"
+                                      [placeholder]="l('MesWorkTagScantagNumberInputDesc')"  required >
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="tagNumber.control.dirty
+                                                 &&tagNumber.control.errors">
+                                                                        <ng-container *ngIf="tagNumber.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagNumber : tagNumber 的控件范围结束=END= -->
+                   <!-- tagScanAccount : tagScanAccount 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="tagScanAccount">
+                            {{l('MesWorkTagScantagScanAccount')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagScanAccount" #tagScanAccount="ngModel"
+                                       [(ngModel)]="entity.tagScanAccount"
+                                      [placeholder]="l('MesWorkTagScantagScanAccountInputDesc')"  required >
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="tagScanAccount.control.dirty
+                                                 &&tagScanAccount.control.errors">
+                                                                        <ng-container *ngIf="tagScanAccount.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagScanAccount : tagScanAccount 的控件范围结束=END= -->
+                   <!-- tagScanDeptID : tagScanDeptID 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="tagScanDeptID">
+                            {{l('tagScanDeptID')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <nz-input-number
+                                    name="tagScanDeptID" #tagScanDeptID="ngModel"
+                                    [(ngModel)]="entity.tagScanDeptID"
+                                    [nzMin]="0"
+                                    [nzMax]="1000000"
+                                    [nzStep]="1"
+                                ></nz-input-number>
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="tagScanDeptID.control.dirty
+                                                 &&tagScanDeptID.control.errors">
+                                                                        <ng-container *ngIf="tagScanDeptID.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagScanDeptID : tagScanDeptID 的控件范围结束=END= -->
+                   <!-- tagScanDateTime : tagScanDateTime 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="tagScanDateTime">
+                            {{l('MesWorkTagScantagScanDateTime')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagScanDateTime" #tagScanDateTime="ngModel"
+                                       [(ngModel)]="entity.tagScanDateTime"
+                                      [placeholder]="l('MesWorkTagScantagScanDateTimeInputDesc')"  required >
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="tagScanDateTime.control.dirty
+                                                 &&tagScanDateTime.control.errors">
+                                                                        <ng-container *ngIf="tagScanDateTime.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagScanDateTime : tagScanDateTime 的控件范围结束=END= -->
+                   <!-- tagUploadDateTime : tagUploadDateTime 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="tagUploadDateTime">
+                            {{l('MesWorkTagScantagUploadDateTime')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagUploadDateTime" #tagUploadDateTime="ngModel"
+                                       [(ngModel)]="entity.tagUploadDateTime"
+                                      [placeholder]="l('MesWorkTagScantagUploadDateTimeInputDesc')"  required >
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="tagUploadDateTime.control.dirty
+                                                 &&tagUploadDateTime.control.errors">
+                                                                        <ng-container *ngIf="tagUploadDateTime.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagUploadDateTime : tagUploadDateTime 的控件范围结束=END= -->
+                   <!-- tagScanPDASerial : tagScanPDASerial 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagScanPDASerial">  
+                            {{l('MesWorkTagScantagScanPDASerial')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagScanPDASerial" #tagScanPDASerial="ngModel"
+                                       [(ngModel)]="entity.tagScanPDASerial"
+                                      [placeholder]="l('MesWorkTagScantagScanPDASerialInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagScanPDASerial : tagScanPDASerial 的控件范围结束=END= -->
+                   <!-- tagScanPDAUUID : tagScanPDAUUID 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagScanPDAUUID">  
+                            {{l('MesWorkTagScantagScanPDAUUID')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagScanPDAUUID" #tagScanPDAUUID="ngModel"
+                                       [(ngModel)]="entity.tagScanPDAUUID"
+                                      [placeholder]="l('MesWorkTagScantagScanPDAUUIDInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagScanPDAUUID : tagScanPDAUUID 的控件范围结束=END= -->
+                   <!-- tagStyle : tagStyle 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="tagStyle">
+                            {{l('MesWorkTagScantagStyle')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagStyle" #tagStyle="ngModel"
+                                       [(ngModel)]="entity.tagStyle"
+                                      [placeholder]="l('MesWorkTagScantagStyleInputDesc')"  required >
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="tagStyle.control.dirty
+                                                 &&tagStyle.control.errors">
+                                                                        <ng-container *ngIf="tagStyle.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagStyle : tagStyle 的控件范围结束=END= -->
+                   <!-- tagColor : tagColor 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="tagColor">
+                            {{l('MesWorkTagScantagColor')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagColor" #tagColor="ngModel"
+                                       [(ngModel)]="entity.tagColor"
+                                      [placeholder]="l('MesWorkTagScantagColorInputDesc')"  required >
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="tagColor.control.dirty
+                                                 &&tagColor.control.errors">
+                                                                        <ng-container *ngIf="tagColor.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagColor : tagColor 的控件范围结束=END= -->
+                   <!-- tagSize : tagSize 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="tagSize">
+                            {{l('MesWorkTagScantagSize')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagSize" #tagSize="ngModel"
+                                       [(ngModel)]="entity.tagSize"
+                                      [placeholder]="l('MesWorkTagScantagSizeInputDesc')"  required >
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="tagSize.control.dirty
+                                                 &&tagSize.control.errors">
+                                                                        <ng-container *ngIf="tagSize.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagSize : tagSize 的控件范围结束=END= -->
+                   <!-- tagQty : tagQty 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="tagQty">
+                            {{l('tagQty')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <nz-input-number
+                                    name="tagQty" #tagQty="ngModel"
+                                    [(ngModel)]="entity.tagQty"
+                                    [nzMin]="0"
+                                    [nzMax]="1000000"
+                                    [nzStep]="1"
+                                ></nz-input-number>
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="tagQty.control.dirty
+                                                 &&tagQty.control.errors">
+                                                                        <ng-container *ngIf="tagQty.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagQty : tagQty 的控件范围结束=END= -->
+                   <!-- isUploaded : isUploaded 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="isUploaded">
+                            {{l('isUploaded')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <nz-input-number
+                                    name="isUploaded" #isUploaded="ngModel"
+                                    [(ngModel)]="entity.isUploaded"
+                                    [nzMin]="0"
+                                    [nzMax]="1000000"
+                                    [nzStep]="1"
+                                ></nz-input-number>
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="isUploaded.control.dirty
+                                                 &&isUploaded.control.errors">
+                                                                        <ng-container *ngIf="isUploaded.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--isUploaded : isUploaded 的控件范围结束=END= -->
+                   <!-- isSyncMesData : isSyncMesData 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="isSyncMesData">
+                            {{l('isSyncMesData')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <nz-input-number
+                                    name="isSyncMesData" #isSyncMesData="ngModel"
+                                    [(ngModel)]="entity.isSyncMesData"
+                                    [nzMin]="0"
+                                    [nzMax]="1000000"
+                                    [nzStep]="1"
+                                ></nz-input-number>
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="isSyncMesData.control.dirty
+                                                 &&isSyncMesData.control.errors">
+                                                                        <ng-container *ngIf="isSyncMesData.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--isSyncMesData : isSyncMesData 的控件范围结束=END= -->
+                   <!-- isPrints : isPrints 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="isPrints">
+                            {{l('isPrints')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <nz-input-number
+                                    name="isPrints" #isPrints="ngModel"
+                                    [(ngModel)]="entity.isPrints"
+                                    [nzMin]="0"
+                                    [nzMax]="1000000"
+                                    [nzStep]="1"
+                                ></nz-input-number>
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="isPrints.control.dirty
+                                                 &&isPrints.control.errors">
+                                                                        <ng-container *ngIf="isPrints.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--isPrints : isPrints 的控件范围结束=END= -->
+                   <!-- tagInvoiceVersion : tagInvoiceVersion 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label nz-col [nzSm]="6" [nzXs]="24" nzRequired nzFor="tagInvoiceVersion">
+                            {{l('tagInvoiceVersion')}}
+                        </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <nz-input-number
+                                    name="tagInvoiceVersion" #tagInvoiceVersion="ngModel"
+                                    [(ngModel)]="entity.tagInvoiceVersion"
+                                    [nzMin]="0"
+                                    [nzMax]="1000000"
+                                    [nzStep]="1"
+                                ></nz-input-number>
+
+                                <!-- 校验 -->
+                                <nz-form-explain *ngIf="tagInvoiceVersion.control.dirty
+                                                 &&tagInvoiceVersion.control.errors">
+                                                                        <ng-container *ngIf="tagInvoiceVersion.control.hasError('required')">{{l('ThisFieldIsRequired')}}</ng-container>                                </nz-form-explain>
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagInvoiceVersion : tagInvoiceVersion 的控件范围结束=END= -->
+                   <!-- isInOrOut : isInOrOut 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="isInOrOut">  
+                            {{l('isInOrOut')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <nz-input-number
+                                    name="isInOrOut" #isInOrOut="ngModel"
+                                    [(ngModel)]="entity.isInOrOut"
+                                    [nzMin]="0"
+                                    [nzMax]="1000000"
+                                    [nzStep]="1"
+                                ></nz-input-number>
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--isInOrOut : isInOrOut 的控件范围结束=END= -->
+                   <!-- isDels : isDels 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="isDels">  
+                            {{l('isDels')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <nz-input-number
+                                    name="isDels" #isDels="ngModel"
+                                    [(ngModel)]="entity.isDels"
+                                    [nzMin]="0"
+                                    [nzMax]="1000000"
+                                    [nzStep]="1"
+                                ></nz-input-number>
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--isDels : isDels 的控件范围结束=END= -->
+                   <!-- tagOrg : tagOrg 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagOrg">  
+                            {{l('tagOrg')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagOrg" #tagOrg="ngModel"
+                                       [(ngModel)]="entity.tagOrg"
+                                      [placeholder]="l('MesWorkTagScantagOrgInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagOrg : tagOrg 的控件范围结束=END= -->
+                   <!-- tagLine : tagLine 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagLine">  
+                            {{l('tagLine')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagLine" #tagLine="ngModel"
+                                       [(ngModel)]="entity.tagLine"
+                                      [placeholder]="l('MesWorkTagScantagLineInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagLine : tagLine 的控件范围结束=END= -->
+
+    </fieldset>
+    <!-- 模态框底部 -->
+    <div class="modal-footer">
+        <button nz-button [nzType]="'default'" type="button" (click)="close()" [disabled]="saving">
+            <i class="iconfont icon-close-circle"></i> {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.form.valid|| saving" [nzLoading]="saving">
+            <i class="iconfont icon-save" *ngIf="!saving"></i> {{l("Save")}}
+        </button>
+    </div>
+</form>

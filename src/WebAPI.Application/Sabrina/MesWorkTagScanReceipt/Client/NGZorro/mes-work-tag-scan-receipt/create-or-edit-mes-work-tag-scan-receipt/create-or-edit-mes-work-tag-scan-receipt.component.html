@@ -1,0 +1,126 @@
+
+<form nz-form #validateForm="ngForm" (ngSubmit)="submitForm()" nzLayout="horizontal" autocomplete="off">
+    <!-- 模态框头部 -->
+    <div class="modal-header">
+        <div class="modal-title">
+            <i class="iconfont icon-medicine-box mr-sm"></i>
+            <span *ngIf="entity.id">{{l('Edit')}}</span>
+            <span *ngIf="!entity.id">{{l('Create')}}</span>
+        </div>
+    </div>
+    <!-- 模态框内容 -->
+    <fieldset>
+        <!-- 提示信息 -->
+        <!-- <nz-alert nzType="info" nzCloseable [nzShowIcon]="true" nzMessage="l('我想提示点什么内容给你说')"></nz-alert> -->
+                   <!-- Version : Version 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="version">  
+                            {{l('MesWorkTagScanReceiptVersion')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="version" #version="ngModel"
+                                       [(ngModel)]="entity.version"
+                                      [placeholder]="l('MesWorkTagScanReceiptVersionInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--Version : Version 的控件范围结束=END= -->
+                   <!-- tagScanAccount : tagScanAccount 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagScanAccount">  
+                            {{l('MesWorkTagScanReceipttagScanAccount')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagScanAccount" #tagScanAccount="ngModel"
+                                       [(ngModel)]="entity.tagScanAccount"
+                                      [placeholder]="l('MesWorkTagScanReceipttagScanAccountInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagScanAccount : tagScanAccount 的控件范围结束=END= -->
+                   <!-- tagScanDeptID : tagScanDeptID 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagScanDeptID">  
+                            {{l('tagScanDeptID')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <nz-input-number
+                                    name="tagScanDeptID" #tagScanDeptID="ngModel"
+                                    [(ngModel)]="entity.tagScanDeptID"
+                                    [nzMin]="0"
+                                    [nzMax]="1000000"
+                                    [nzStep]="1"
+                                ></nz-input-number>
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagScanDeptID : tagScanDeptID 的控件范围结束=END= -->
+                   <!-- tagScanDateTime : tagScanDateTime 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagScanDateTime">  
+                            {{l('MesWorkTagScanReceipttagScanDateTime')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagScanDateTime" #tagScanDateTime="ngModel"
+                                       [(ngModel)]="entity.tagScanDateTime"
+                                      [placeholder]="l('MesWorkTagScanReceipttagScanDateTimeInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagScanDateTime : tagScanDateTime 的控件范围结束=END= -->
+                   <!-- tagScanPDASerial : tagScanPDASerial 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagScanPDASerial">  
+                            {{l('MesWorkTagScanReceipttagScanPDASerial')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagScanPDASerial" #tagScanPDASerial="ngModel"
+                                       [(ngModel)]="entity.tagScanPDASerial"
+                                      [placeholder]="l('MesWorkTagScanReceipttagScanPDASerialInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagScanPDASerial : tagScanPDASerial 的控件范围结束=END= -->
+                   <!-- tagScanPDAUUID : tagScanPDAUUID 的控件范围=Start= -->
+                <nz-form-item nz-row>
+                        <nz-form-label [nzSm]="6" [nzXs]="24" nzFor="tagScanPDAUUID">  
+                            {{l('MesWorkTagScanReceipttagScanPDAUUID')}}
+                            </nz-form-label>
+                    <nz-form-control nz-col [nzSm]="14" [nzXs]="24" nzHasFeedback>
+                        <!--  控件位置 -->
+                                <input nz-input name="tagScanPDAUUID" #tagScanPDAUUID="ngModel"
+                                       [(ngModel)]="entity.tagScanPDAUUID"
+                                      [placeholder]="l('MesWorkTagScanReceipttagScanPDAUUIDInputDesc')" >
+
+
+                    </nz-form-control>
+             
+                </nz-form-item>
+                <!--tagScanPDAUUID : tagScanPDAUUID 的控件范围结束=END= -->
+
+    </fieldset>
+    <!-- 模态框底部 -->
+    <div class="modal-footer">
+        <button nz-button [nzType]="'default'" type="button" (click)="close()" [disabled]="saving">
+            <i class="iconfont icon-close-circle"></i> {{l("Cancel")}}
+        </button>
+        <button nz-button [nzType]="'primary'" type="submit" [disabled]="!validateForm.form.valid|| saving" [nzLoading]="saving">
+            <i class="iconfont icon-save" *ngIf="!saving"></i> {{l("Save")}}
+        </button>
+    </div>
+</form>
