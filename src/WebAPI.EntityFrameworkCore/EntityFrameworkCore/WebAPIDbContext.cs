@@ -23,12 +23,11 @@ namespace WebAPI.EntityFrameworkCore
 
         
         public   DbSet<Inv> Inv { get; set; }
-        public DbSet<ConPpr> ConPprs { get; set; }
-        public DbSet<Locations> Location { get; set; }
+        public DbSet<ConPpr> ConPprs { get; set; } 
         public DbSet<CONDetails> Detailss { get; set; }
         public DbSet<Countrecei> CountReceis { get; set; }
         public DbSet<Invrecei> Invreceis { get; set; }
-        public DbSet<Locations> Locationss { get; set; }
+        public DbSet<Locations> Location { get; set; }
         public DbSet<MesDept> MesDepts { get; set; }
         public DbSet<MesWorkTagScan> MesWorkTagScans { get; set; }
         public DbSet<MesWorkTagScanReceipt> MesWorkTagScanReceipts { get; set; }
